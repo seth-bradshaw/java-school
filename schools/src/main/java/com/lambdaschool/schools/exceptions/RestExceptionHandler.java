@@ -50,6 +50,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler
         errorDetail.setStatus(HttpStatus.NOT_FOUND.value());
         errorDetail.setDetail(rnfe.getMessage());
         errorDetail.setDeveloperMessage(rnfe.getClass().getName());
+        errorDetail.setErrors(helper.getConstraintViolation(rnfe));
 
         return new ResponseEntity<>(errorDetail,
                 null,
